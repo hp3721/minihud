@@ -1,5 +1,6 @@
 package fi.dy.masa.minihud.renderer;
 
+import fi.dy.masa.minihud.config.RendererToggle;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
@@ -38,6 +39,15 @@ public class OverlayRenderer
             {
                 return;
             }
+        }
+
+
+        if (RendererToggle.OVERLAY_BEACON_RANGE.getBooleanValue())
+        {
+            double dx = entity.prevX + (entity.getPos().x - entity.prevX) * partialTicks;
+            double dy = entity.prevY + (entity.getPos().y - entity.prevY) * partialTicks;
+            double dz = entity.prevZ + (entity.getPos().z - entity.prevZ) * partialTicks;
+            OverlayRendererBeaconRange.renderBeaconBoxForPlayerIfHoldingItem(mc.player, dx, dy, dz, partialTicks);
         }
 
         RenderContainer.INSTANCE.render(entity, matrixStack, mc, partialTicks);

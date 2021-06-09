@@ -20,6 +20,7 @@
         "MixinNeighborUpdateDebugRenderer",
         "MixinScreen",
         "MixinSubtitlesHud",
+        "MixinTileEntityBeacon",
         "MixinWorld"
     ],
     "injectors": {
